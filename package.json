@@ -1,7 +1,7 @@
 {
   "name": "event-management",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,12 @@
   "description": "",
   "dependencies": {
     "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "mysql2": "^3.14.2",
-    "node-sql-2": "^0.80.1"
+    "node-sql-2": "^0.80.1",
+    "nodemailer": "^7.0.5"
   }
 }

@@ -1,17 +1,15 @@
-import mysql from "mysql2"
+import express from "express";
+import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
+import homeRoutes from "./routes/homeRoutes.js"
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "campus_event_management"
-    
-})
+const app = express();
 
-db.connect((err) => {
-    if (err) {
-        console.error("Error connecting to DB:", err);
-    } else {
-        console.log("Database connected successfully");
-    }
-});
+app.use(cors());
+app.use(express.json()); // to parse JSON
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/", homeRoutes)
+
+export default app;
