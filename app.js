@@ -18,7 +18,7 @@ app.use(
 app.use(express.json());
 
 // ✅ Mount routes AFTER middleware
-app.use("/api/auth", authRoutes);
+app.use("/", authRoutes);
 app.use("/", homeRoutes);
 app.use("/api/test", testRoutes); // ⬅️ Changed to /api/test for clarity
 
