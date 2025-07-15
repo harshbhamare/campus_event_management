@@ -1,15 +1,25 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoutes.js";
-import homeRoutes from "./routes/homeRoutes.js"
+import homeRoutes from "./routes/homeRoutes.js";
+import testRoutes from "./routes/testRoutes.js";
 
 const app = express();
 
-app.use(cors());
-app.use(express.json()); // to parse JSON
+// ✅ Apply CORS and JSON middleware first
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+app.use(express.json());
 
-// Routes
+// ✅ Mount routes AFTER middleware
 app.use("/api/auth", authRoutes);
-app.use("/", homeRoutes)
+app.use("/", homeRoutes);
+app.use("/api/test", testRoutes); // ⬅️ Changed to /api/test for clarity
 
 export default app;
