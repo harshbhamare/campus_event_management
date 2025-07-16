@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 import homeRoutes from "./routes/homeRoutes.js";
 import testRoutes from "./routes/testRoutes.js";
@@ -16,6 +17,8 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
+
 
 // ✅ Mount routes AFTER middleware
 app.use("/", authRoutes);

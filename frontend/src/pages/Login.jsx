@@ -19,10 +19,12 @@ const Login = () => {
     e.preventDefault();
     setMessage('');
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
+      const res = await axios.post("http://localhost:3000/login", form, {
+        withCredentials: true,
+      });
       setMessage(res.data.message || "Login successful!");
       // Example redirect:
-      // navigate("/dashboard");
+      navigate("/dashboard");
     } catch (err) {
       setMessage(err.response?.data?.error || "Login failed");
     }

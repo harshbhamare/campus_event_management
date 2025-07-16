@@ -45,7 +45,9 @@ const Signup = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/auth/register", form);
+      const res = await axios.post("http://localhost:3000/auth/register", form, {
+        withCredentials: true,
+      });
       if (res.data.redirect) {
         navigate(res.data.redirect); // ✅ redirect after success
       }
